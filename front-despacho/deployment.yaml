@@ -15,14 +15,6 @@ spec:
       containers:
       - name: front-despacho
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/front_despacho:latest
+        imagePullPolicy: Always  # <--- ESTO ES LO QUE TE FALTA. Obliga a bajar la imagen nueva siempre.
         ports:
-        # Tomcat arranca en el 8081 según los logs
-        - containerPort: 8081
-        env:
-        # Credenciales inyectadas directamente para la conexión con MySQL 8.0 en AWS RDS
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
-        - name: SPRING_DATASOURCE_USERNAME
-          value: "admin"
-        - name: SPRING_DATASOURCE_PASSWORD
-          value: "Innovatech2026!"
+        - containerPort: 80
