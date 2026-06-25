@@ -17,3 +17,12 @@ spec:
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/front_despacho:latest
         ports:
         - containerPort: 80
+        env:
+        - name: DB_ENDPOINT
+          value: "innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USERNAME
+          value: "admin"
+        - name: DB_PASSWORD
+          value: "Innovatech2026!"
