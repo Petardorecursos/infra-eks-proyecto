@@ -11,10 +11,15 @@ spec:
     metadata:
       labels:
         app: front-despacho
+      # --- ESTO ES LO QUE FALTA ---
+      annotations:
+        sidecar.opentelemetry.io/inject: "false"
+        instrumentation.opentelemetry.io/inject-java: "false"
+      # ----------------------------
     spec:
       containers:
       - name: front-despacho
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/front_despacho:latest
-        imagePullPolicy: Always  # <--- ESTO ES LO QUE TE FALTA. Obliga a bajar la imagen nueva siempre.
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
