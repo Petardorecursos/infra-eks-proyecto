@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-despacho-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-despacho
+  template:
+    metadata:
+      labels:
+        app: front-despacho
+    spec:
+      containers:
+      - name: front-despacho
+        image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/front_despacho:latest
+        ports:
+        - containerPort: 80
