@@ -20,7 +20,7 @@ spec:
         env:
         # Usamos variables estándar de Spring Boot para sobrescribir la configuración interna
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech_db"
+          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech-db?allowPublicKeyRetrieval=true&useSSL=false"
         - name: SPRING_DATASOURCE_USERNAME
           value: "admin"
         - name: SPRING_DATASOURCE_PASSWORD
