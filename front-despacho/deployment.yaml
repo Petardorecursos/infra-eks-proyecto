@@ -18,11 +18,8 @@ spec:
         ports:
         - containerPort: 80
         env:
-        # Estas variables sobreescriben la configuración interna de Spring Boot
-        # para evitar el conflicto con los marcadores ${DB_PORT}
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech-db"
-        - name: SPRING_DATASOURCE_USERNAME
-          value: "admin"
-        - name: SPRING_DATASOURCE_PASSWORD
-          value: "Innovatech2026!"
+        # El frontend debe apuntar al Servicio K8s del backend
+        # ⚠️ IMPORTANTE: El nombre "API_URL" depende de cómo esté programado tu código.
+        # Podría llamarse NEXT_PUBLIC_API_URL, REACT_APP_API_URL, VITE_API_URL, etc.
+        - name: API_URL
+          value: "http://back-ventas-service:8080" # Reemplaza "back-ventas-service" con el nombre real de tu Service
