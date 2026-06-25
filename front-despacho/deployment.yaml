@@ -18,9 +18,10 @@ spec:
         ports:
         - containerPort: 80
         env:
-        # Usamos variables estándar de Spring Boot para evitar el error de parseo
+        # Estas variables sobreescriben la configuración interna de Spring Boot
+        # para evitar el conflicto con los marcadores ${DB_PORT}
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/nombre_de_tu_bd"
+          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech-db"
         - name: SPRING_DATASOURCE_USERNAME
           value: "admin"
         - name: SPRING_DATASOURCE_PASSWORD
