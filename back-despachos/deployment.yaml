@@ -18,12 +18,13 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: DB_ENDPOINT
-          value: "innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com"
-        - name: DB_PORT
-          value: "3306"
-        - name: DB_USERNAME
+        # 1. Forzamos a Tomcat a usar el puerto 8080
+        - name: SERVER_PORT
+          value: "8080"
+        # 2. Las credenciales de BD exactas que funcionaron en ventas
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
+        - name: SPRING_DATASOURCE_USERNAME
           value: "admin"
-        # Reemplaza TU_CONTRASEÑA_REAL con la contraseña que configuraste al crear la base de datos
-        - name: DB_PASSWORD
+        - name: SPRING_DATASOURCE_PASSWORD
           value: "Innovatech2026!"
