@@ -15,13 +15,12 @@ spec:
       containers:
       - name: back-despachos
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/back-despachos_springboot:latest
+        imagePullPolicy: Always  # <--- ESTA ES LA CLAVE PARA NO USAR VERSIONES
         ports:
         - containerPort: 8080
         env:
-        # Forzamos a Tomcat a usar el puerto 8080
         - name: SERVER_PORT
           value: "8080"
-        # Configuración de base de datos
         - name: SPRING_DATASOURCE_URL
           value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
         - name: SPRING_DATASOURCE_USERNAME
