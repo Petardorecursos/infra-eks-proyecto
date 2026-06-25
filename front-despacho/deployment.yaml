@@ -16,10 +16,13 @@ spec:
       - name: front-despacho
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/front_despacho:latest
         ports:
-        - containerPort: 80
+        # Tomcat arranca en el 8081 según los logs
+        - containerPort: 8081
         env:
-        # El frontend debe apuntar al Servicio K8s del backend
-        # ⚠️ IMPORTANTE: El nombre "API_URL" depende de cómo esté programado tu código.
-        # Podría llamarse NEXT_PUBLIC_API_URL, REACT_APP_API_URL, VITE_API_URL, etc.
-        - name: API_URL
-          value: "http://back-ventas-service:8080" # Reemplaza "back-ventas-service" con el nombre real de tu Service
+        # Credenciales inyectadas directamente para la conexión con MySQL 8.0 en AWS RDS
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "admin"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "Innovatech2026!"
