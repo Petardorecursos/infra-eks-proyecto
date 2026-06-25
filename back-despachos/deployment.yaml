@@ -17,3 +17,13 @@ spec:
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/back-despachos_springboot:latest
         ports:
         - containerPort: 8080
+        env:
+        - name: DB_ENDPOINT
+          value: "innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USERNAME
+          value: "admin"
+        # Reemplaza TU_CONTRASEÑA_REAL con la contraseña que configuraste al crear la base de datos
+        - name: DB_PASSWORD
+          value: "Innovatech2026!"
