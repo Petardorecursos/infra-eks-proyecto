@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: front-despacho-deployment
+  labels:
+    app: front-despacho
 spec:
   replicas: 1
   selector:
@@ -11,11 +13,14 @@ spec:
     metadata:
       labels:
         app: front-despacho
-      # --- ESTO ES LO QUE FALTA ---
       annotations:
+        # Estas anotaciones son CRÍTICAS para evitar que EKS intente 
+        # inyectar agentes de Java/Python/Node en tu contenedor Nginx
         sidecar.opentelemetry.io/inject: "false"
         instrumentation.opentelemetry.io/inject-java: "false"
-      # ----------------------------
+        instrumentation.opentelemetry.io/inject-nodejs: "false"
+        instrumentation.opentelemetry.io/inject-python: "false"
+        instrumentation.opentelemetry.io/inject-dotnet: "false"
     spec:
       containers:
       - name: front-despacho
@@ -23,3 +28,10 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
