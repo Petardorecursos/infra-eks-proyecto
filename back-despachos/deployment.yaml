@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: back-despachos
-        image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/back-despachos_springboot:latest
+        image: 760666101701.dkr.ecr.us-east-1.amazonaws.com/back-despachos-springboot:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
