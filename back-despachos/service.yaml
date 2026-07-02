@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: back-despachos-service
 spec:
+  # Selector debe coincidir con el label de tu deployment back-despachos
   selector:
     app: back-despachos
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: LoadBalancer
+      port: 8080        # Puerto interno del servicio
+      targetPort: 8080  # Debe coincidir con el containerPort del deployment
+  type: ClusterIP       # Cambiado a ClusterIP para optimizar costos y seguridad
