@@ -14,8 +14,6 @@ spec:
       labels:
         app: front-despacho
       annotations:
-        # Estas anotaciones son CRÍTICAS para evitar que EKS intente 
-        # inyectar agentes de Java/Python/Node en tu contenedor Nginx
         sidecar.opentelemetry.io/inject: "false"
         instrumentation.opentelemetry.io/inject-java: "false"
         instrumentation.opentelemetry.io/inject-nodejs: "false"
@@ -24,7 +22,8 @@ spec:
     spec:
       containers:
       - name: front-despacho
-        image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/front_despacho:latest
+        # URL corregida con tu cuenta real y el nombre exacto del repo
+        image: 760666101701.dkr.ecr.us-east-1.amazonaws.com/front-despacho:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
