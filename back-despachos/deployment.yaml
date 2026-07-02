@@ -22,10 +22,13 @@ spec:
         - name: SERVER_PORT
           value: "8080"
         - name: SERVER_ADDRESS
-          value: "0.0.0.0" # <--- ESTO ES CRUCIAL PARA DOCKER
+          value: "0.0.0.0"
+        # URL corregida para el servicio interno de MySQL en el clúster
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
+          value: "jdbc:mysql://mysql-service:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
+        # Usuario 'root' por defecto en la imagen de MySQL
         - name: SPRING_DATASOURCE_USERNAME
-          value: "admin"
+          value: "root"
+        # Contraseña definida en el deployment de mysql-db
         - name: SPRING_DATASOURCE_PASSWORD
           value: "Innovatech2026!"
