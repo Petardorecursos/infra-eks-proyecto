@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: back-ventas-service
 spec:
+  # Selector debe coincidir con el label de tu deployment
   selector:
     app: back-ventas
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8081
-  type: LoadBalancer
+      port: 8080        # El puerto que otros servicios usan para llamar al backend
+      targetPort: 8080  # IMPORTANTE: Debe coincidir con el containerPort del deployment
+  type: ClusterIP       # Cambiado a ClusterIP para ahorrar costos y mejorar seguridad
