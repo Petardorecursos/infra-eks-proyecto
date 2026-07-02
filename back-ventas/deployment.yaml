@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: back-ventas
-        image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/back-ventas_springboot:latest
+        image: 760666101701.dkr.ecr.us-east-1.amazonaws.com/back-ventas-springboot:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
