@@ -15,13 +15,19 @@ spec:
       containers:
       - name: back-ventas
         image: 495619789963.dkr.ecr.us-east-1.amazonaws.com/back-ventas_springboot:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
-        # Usamos variables estándar de Spring Boot para sobrescribir la configuración interna
+        - name: SERVER_PORT
+          value: "8080"
+        - name: SERVER_ADDRESS
+          value: "0.0.0.0"
+        # URL corregida para apuntar al servicio interno 'mysql-service'
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://innovatech-db.ctfx6aibrdbf.us-east-1.rds.amazonaws.com:3306/innovatech-db?allowPublicKeyRetrieval=true&useSSL=false"
+          value: "jdbc:mysql://mysql-service:3306/innovatech_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
+        # Usuario 'root' por defecto para la imagen de MySQL
         - name: SPRING_DATASOURCE_USERNAME
-          value: "admin"
+          value: "root"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "Innovatech2026!"
