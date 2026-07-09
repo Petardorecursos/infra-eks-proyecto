@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: back-despachos
-        image: 760666101701.dkr.ecr.us-east-1.amazonaws.com/back-despachos-springboot:latest
+        # ¡CORRECCIÓN AQUÍ!: ID de cuenta de AWS actualizado a 572798954903
+        image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-despachos-springboot:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
