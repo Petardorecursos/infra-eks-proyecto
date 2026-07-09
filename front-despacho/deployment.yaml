@@ -22,8 +22,8 @@ spec:
     spec:
       containers:
       - name: front-despacho
-        # URL corregida con tu cuenta real y el nombre exacto del repo
-        image: 760666101701.dkr.ecr.us-east-1.amazonaws.com/front-despacho:latest
+        # ¡CORRECCIÓN AQUÍ!: ID de cuenta de AWS actualizado a 572798954903
+        image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/front-despacho:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
