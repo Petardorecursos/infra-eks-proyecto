@@ -1,39 +1,55 @@
-import React from "react";
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Innovatech2026!
+      MYSQL_DATABASE: innovatech_db
+    ports:
+      - "3307:3306"
+    networks:
+      - app-network
 
-export const CardComponent = ({ title, description, buttonText, onClick }) => {
-  return (
-    <div className=" p-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-white mb-20 mr-10 h-full overflow-hidden">
-      <a href="#">
-        <h5 className="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-gray-800">
-          {title}
-        </h5>
-      </a>
-      <p className="mb-5 font-normal text-gray-700 dark:text-gray-400">
-        {description}
-      </p>
-      <div className="flex justify-center">
-        <button
-          onClick={onClick}
-          className="inline-flex items-center justify-center w-80 h-10 px-3 py-2 text-base text-center text-white bg-red-600 border rounded-xl font-bold hover:bg-red-700 transition-all duration-500 "
-        >
-          {buttonText}
-          <svg
-            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-};
+  back-ventas:
+    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-ventas-springboot:latest
+    container_name: back-ventas
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/innovatech_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Innovatech2026!
+    ports:
+      - "8081:8080"
+    networks:
+      - app-network
+
+  back-despachos:
+    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-despachos-springboot:latest
+    container_name: back-despachos
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/innovatech_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Innovatech2026!
+    ports:
+      - "8082:8080"
+    networks:
+      - app-network
+
+  front-despacho:
+    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/front-despacho:latest
+    container_name: front-despacho
+    ports:
+      - "80:80"
+    depends_on:
+      - back-ventas
+      - back-despachos
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
