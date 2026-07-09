@@ -1,5 +1,3 @@
-# infra-eks-proyecto
-
 # 🚀 Plataforma Innovatech Chile - Infraestructura y Orquestación (AWS EKS)
 
 Este repositorio actúa como el **núcleo unificador y única fuente de verdad (Single Source of Truth)** para la arquitectura Cloud Native de la plataforma de ventas y despachos de Innovatech. 
