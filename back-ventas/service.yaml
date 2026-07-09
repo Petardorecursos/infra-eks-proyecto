@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 8080        # El puerto que otros servicios usan para llamar al backend
       targetPort: 8080  # IMPORTANTE: Debe coincidir con el containerPort del deployment
-  type: ClusterIP       # Cambiado a ClusterIP para ahorrar costos y mejorar seguridad
+  type: LoadBalancer    # Cambiado a LoadBalancer para permitir la conexión externa del frontend
