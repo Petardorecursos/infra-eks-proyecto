@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mysql-db:
     image: mysql:8.0
@@ -14,7 +12,7 @@ services:
       - app-network
 
   back-ventas:
-    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-ventas:latest
+    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-ventas-springboot:latest
     container_name: back-ventas
     depends_on:
       - mysql-db
@@ -28,7 +26,7 @@ services:
       - app-network
 
   back-despachos:
-    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-despachos:latest
+    image: 572798954903.dkr.ecr.us-east-1.amazonaws.com/back-despachos-springboot:latest
     container_name: back-despachos
     depends_on:
       - mysql-db
