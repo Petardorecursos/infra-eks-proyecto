@@ -8,6 +8,6 @@ spec:
     app: back-despachos
   ports:
     - protocol: TCP
-      port: 8080        # Puerto interno del servicio
+      port: 8080        # Puerto expuesto por el balanceador
       targetPort: 8080  # Debe coincidir con el containerPort del deployment
-  type: ClusterIP       # Cambiado a ClusterIP para optimizar costos y seguridad
+  type: LoadBalancer    # Cambiado a LoadBalancer para permitir la conexión externa del frontend
